@@ -1,7 +1,7 @@
 var HDWalletProvider = require("truffle-hdwallet-provider");
 const MNEMONIC = 'YOUR WALLET KEY';
 const INFURA_MAINNET_API_KEY = '';
-const INFURA_ROPSTEN_API_KEY = '';
+const INFURA_ROPSTEN_API_KEY = ''; 
 
 module.exports = {
     networks: {
