@@ -29,7 +29,6 @@ contract BoredApesFanClubNFT is ERC721Enumerable, Ownable, RoyaltiesV2Impl {
         string memory _initBaseURI
     ) ERC721(_name, _symbol) {
         setBaseURI(_initBaseURI);
-        mint(msg.sender, 0);
     }
 
     // internal
