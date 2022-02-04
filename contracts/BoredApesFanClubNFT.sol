@@ -4,9 +4,9 @@ pragma solidity ^0.8.7;
 
 import "./token/ERC721/extensions/ERC721Enumerable.sol";
 import "./access/Ownable.sol";
-import "./@rarible/royalties/contracts/impl/RoyaltiesV2Impl.sol";
-import "./@rarible/royalties/contracts/LibPart.sol";
-import "./@rarible/royalties/contracts/LibRoyaltiesV2.sol";
+import "./rarible/royalties/contracts/impl/RoyaltiesV2Impl.sol";
+import "./rarible/royalties/contracts/LibPart.sol";
+import "./rarible/royalties/contracts/LibRoyaltiesV2.sol";
 
 contract BoredApesFanClubNFT is ERC721Enumerable, Ownable, RoyaltiesV2Impl {
     using Strings for uint256;
@@ -29,7 +29,7 @@ contract BoredApesFanClubNFT is ERC721Enumerable, Ownable, RoyaltiesV2Impl {
         string memory _initBaseURI
     ) ERC721(_name, _symbol) {
         setBaseURI(_initBaseURI);
-        mint(msg.sender, 10);
+        mint(msg.sender, 0);
     }
 
     // internal
@@ -136,7 +136,7 @@ contract BoredApesFanClubNFT is ERC721Enumerable, Ownable, RoyaltiesV2Impl {
         return super.supportsInterface(interfaceId);
     }
 
-    function royaltyInfo(uint256 _tokenId, uint256 _salePrice) override external view returns (address receiver, uint256 royaltyAmount) {
+    function royaltyInfo(uint256 _tokenId, uint256 _salePrice) external view returns (address receiver, uint256 royaltyAmount) {
         LibPart.Part[] memory _royalties = royalties[_tokenId];
 
         if(_royalties.length > 0) {
